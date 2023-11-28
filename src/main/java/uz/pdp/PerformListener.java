@@ -1,20 +1,31 @@
 package uz.pdp;
 
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+@Aspect
 public class PerformListener {
-    public void start(){
+    @Before("execution(* uz.pdp.Performance.perform(..))")
+    public void start() {
         System.out.println("Starting...");
     }
 
-    public void init(){
-        System.out.println("Initializing...");
+    @After("execution(* uz.pdp.Performance.perform(..))")
+    public void complete() {
+        System.out.println("Complete...");
     }
 
-    public void result(){
+    @AfterReturning("execution(* uz.pdp.Performance.perform(..))")
+    public void result() {
         System.out.println("Resulting...");
     }
 
-    public void exception(){
-        System.out.println("Exception occurring,,,");
+    @AfterThrowing("execution(* uz.pdp.Performance.perform(..))")
+    public void exception() {
+        System.out.println("Exception occurring...");
     }
 
 }

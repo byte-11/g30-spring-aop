@@ -1,10 +1,10 @@
 package uz.pdp;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean-config.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         Performance performance = context.getBean(Performance.class);
         performance.perform();
     }
